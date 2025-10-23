@@ -12,11 +12,6 @@ class Refugio extends Model
   
     protected $table = 'refugios';
 
-    /**
-     * Los atributos que se pueden asignar masivamente.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'user_id',
         'nombre_refugio',

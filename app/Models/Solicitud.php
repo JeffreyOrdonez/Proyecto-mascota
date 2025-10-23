@@ -10,11 +10,7 @@ class Solicitud extends Model
 
     protected $table = 'solicitudes';
 
-    /**
-     * Los atributos que se pueden asignar masivamente.
-     *
-     * @var array<int, string>
-     */
+  
     protected $fillable = [
         'user_id',
         'mascota_id',

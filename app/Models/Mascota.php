@@ -11,11 +11,6 @@ class Mascota extends Model
 
     protected $table = 'mascotas';
 
-    /**
-     * Los atributos que se pueden asignar masivamente.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'refugio_id',
         'nombre',
