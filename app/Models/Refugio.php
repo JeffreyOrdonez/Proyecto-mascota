@@ -9,7 +9,7 @@ class Refugio extends Model
 {
     use HasFactory;
 
-  
+
     protected $table = 'refugios';
 
     protected $fillable = [
@@ -23,7 +23,6 @@ class Refugio extends Model
     ];
 
 
-  
     public function user()
     {
         return $this->belongsTo(User::class);
