@@ -13,41 +13,43 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
+
+    protected $table = 'usuarios';
+
     protected $fillable = [
         'role_id',
-        'nombre',  
+        'nombre',
         'apellido',
         'telefono',
         'email',
         'password',
-        'estado', 
+        'estado',
     ];
 
-    
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-   
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-  
+
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
-   
-    public function refugio()
+
+    public function refugios()
     {
-        return $this->hasOne(Refugio::class);
+        return $this->hasMany(Refugio::class);
     }
 
-  
+
     public function solicitudes()
     {
         return $this->hasMany(Solicitud::class);
