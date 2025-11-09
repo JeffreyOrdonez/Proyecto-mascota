@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')
-                  ->constrained('users')
-                  ->onDelete('cascade'); 
+                ->constrained('usuarios')
+                ->onDelete('cascade'); 
             $table->foreignId('mascota_id')
-                  ->constrained('mascotas')
-                  ->onDelete('cascade'); 
+                ->constrained('mascotas')
+                ->onDelete('cascade'); 
             $table->string('estado', 20)->default('pendiente');
             $table->timestamps();
             $table->unique(['user_id', 'mascota_id']);
