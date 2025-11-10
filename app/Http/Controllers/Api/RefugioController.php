@@ -59,14 +59,57 @@ class RefugioController extends Controller
             ], 500);
         }
     }
+    // PUT /api/refugios/{id}
+    public function update(StoreRefugioRequest $request, $id)
+    {
+        try {
+            $refugio = Refugio::find($id);
+            if (!$refugio) {
+                return response()->json(['error' => 'Refugio no encontrado'], 404);
+            }
 
+            $data = $request->validated();
+
+            $refugio->update([
+                'user_id' => $data['user_id'],
+                'nombre_refugio' => $data['nombre_refugio'],
+                'direccion' => $data['direccion'],
+                'estado' => $data['estado'],
+                'descripcion' => $data['descripcion'] ?? null,
+                'telefono_contacto' => $data['telefono_contacto'] ?? null,
+                'correo_contacto' => $data['correo_contacto'] ?? null,
+            ]);
+
+            return response()->json([
+                'message' => 'Refugio actualizado correctamente.',
+                'data' => $refugio
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Error al actualizar el refugio.',
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    
+    // DELETE /api/refugios/{id}
     public function destroy($id)
     {
         $refugio = Refugio::find($id);
         if (!$refugio) {
-            return response()->json(['error' => 'Refugio not found'], 404);
+            return response()->json(['error' => 'Refugio no encontrado'], 404);
         }
-        $refugio->delete();
-        return response()->json(['message' => 'Refugio deleted']);
+
+        try {
+            $refugio->delete();
+            return response()->json(['message' => 'Refugio eliminado correctamente.']);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Error al eliminar el refugio.',
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
+
 }
