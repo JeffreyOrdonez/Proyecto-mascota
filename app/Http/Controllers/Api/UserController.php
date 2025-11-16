@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Hash;
 
+use App\Http\Requests\UpdateUserRequest;
+
 class UserController extends Controller
 {
     /**
@@ -49,16 +51,29 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        //Obtener datos validos
+        $data = $request->validated();
+
+        //Si se cambia la contra, se encripta
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
+        //Actualizar modelo
+        $user->update($data);
+
+        return response()->json($user);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return response()->json(null, 204);
     }
 }
