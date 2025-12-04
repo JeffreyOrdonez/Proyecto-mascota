@@ -60,6 +60,28 @@ class RefugioController extends Controller
         }
     }
 
+    public function show(Refugio $refugio)
+    {
+        return response()->json($refugio);
+    }
+
+    public function update(Request $request, Refugio $refugio)
+    {
+        $data = $request->validate([
+            'user_id'           => ['sometimes','integer','exists:usuarios,id'],
+            'nombre_refugio'    => ['sometimes','required','string','max:150'],
+            'descripcion'       => ['nullable','string'],
+            'direccion'         => ['sometimes','required','string'],
+            'telefono_contacto' => ['nullable','string','max:30'],
+            'correo_contacto'   => ['nullable','email','max:150'],
+            'estado'            => ['sometimes','in:activo,inactivo'],
+        ]);
+
+        $refugio->update($data);
+ 
+        return response()->json($refugio);
+    }
+
     public function destroy($id)
     {
         $refugio = Refugio::find($id);
