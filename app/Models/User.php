@@ -16,6 +16,21 @@ class User extends Authenticatable
 
     protected $table = 'usuarios';
 
+    /**
+     * Truco para que Breeze funcione con 'nombre' en lugar de 'name'.
+     * Cuando alguien pida $user->name, devolverá $user->nombre.
+     */
+    public function getNameAttribute()
+    {
+        return $this->nombre;
+    }
+
+    // SOLO AGREGA ESTO SI TU COLUMNA EN BD NO SE LLAMA 'email'
+    public function username()
+    {
+        return 'correo'; // o como se llame tu columna de login
+    }
+
     protected $fillable = [
         'role_id',
         'nombre',
