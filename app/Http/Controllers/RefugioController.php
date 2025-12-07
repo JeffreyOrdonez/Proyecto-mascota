@@ -31,8 +31,15 @@ class RefugioController extends Controller
             ->with('success', '¡Refugio creado con éxito!');
     }
 
-    public function show(Refugio $refugio): JsonResponse
+    public function show($id)
     {
+        $refugio = Refugio::find($id);
+
+        if (!$refugio) {
+            return response()->json(['error' => 'Refugio no encontrado'], 404);
+        }
+
+        // NOTA: Esto devuelve JSON (texto), no tu diseño bonito.
         return response()->json($refugio);
     }
 

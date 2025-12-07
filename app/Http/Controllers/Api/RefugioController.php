@@ -69,4 +69,20 @@ class RefugioController extends Controller
         $refugio->delete();
         return response()->json(['message' => 'Refugio deleted']);
     }
+
+    /**
+     * Muestra un refugio específico.
+     */
+    public function show($id)
+    {
+        $refugio = Refugio::find($id);
+
+        if (!$refugio) {
+            return response()->json(['error' => 'Refugio no encontrado'], 404);
+        }
+
+        // NOTA: Si usas esto para la WEB, deberías cambiar
+        // la siguiente línea por: return view('refugios.show', compact('refugio'));
+        return response()->json($refugio);
+    }
 }
