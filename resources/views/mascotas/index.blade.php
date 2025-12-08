@@ -1,19 +1,45 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Listado de Mascotas') }}
-            </h2>
-            <a href="{{ route('mascotas.create') }}" class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded">
-                + Nueva Mascota
-            </a>
-        </div>
-    </x-slot>
+            <div class="flex justify-between items-center w-full">
+
+                {{-- Título Izquierdo --}}
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    🐾 Bienvenido a Proyecto Mascota
+                </h2>
+
+                {{-- MENÚ SUPERIOR --}}
+                <nav class="flex gap-6 text-lg">
+                    
+                    <a href="{{ route('dashboard') }}"
+                    class="text-indigo-600 hover:text-indigo-800 font-semibold">
+                        Inicio
+                    </a>
+
+                    <a href="{{ route('web.refugios.index') }}"
+                    class="text-indigo-600 hover:text-indigo-800 font-semibold">
+                        Refugios
+                    </a>
+
+                </nav>
+
+                {{-- Título Central --}}
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    {{ __('Listado de Mascotas') }}
+                </h2>
+
+                {{-- Botón Nuevo --}}
+                <a href="{{ route('mascotas.create') }}" 
+                class="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded">
+                    + Nueva Mascota
+                </a>
+
+            </div>
+        </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
 
                     <table class="min-w-full leading-normal">
                         <thead>

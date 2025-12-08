@@ -28,7 +28,15 @@
                                 />
                                 <x-input-error :messages="$errors->get('nombre')" class="mt-2" />
                             </div>
-
+                            {{-- Sexo --}}
+                            <div class="mb-4">
+                                <x-input-label for="sexo" :value="__('Sexo')" />
+                                <select name="sexo" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                    <option value="Macho" {{ $mascota->sexo == 'Macho' ? 'selected' : '' }}>Macho</option>
+                                    <option value="Hembra" {{ $mascota->sexo == 'Hembra' ? 'selected' : '' }}>Hembra</option>
+                                </select>
+                                <x-input-error :messages="$errors->get('sexo')" class="mt-2" />
+                            </div>
                             {{-- Edad --}}
                             <div>
                                 <x-input-label for="edad" :value="__('Edad (Años)')" />
@@ -117,7 +125,7 @@
                             >{{ old('descripcion', $mascota->descripcion) }}</textarea>
                             <x-input-error :messages="$errors->get('descripcion')" class="mt-2" />
                         </div>
-
+                        
                         <div class="flex justify-end">
                             <a href="{{ route('mascotas.index') }}" class="text-gray-500 mr-4 mt-2 hover:text-gray-700">
                                 Cancelar

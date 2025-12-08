@@ -1,7 +1,25 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                🐾 Bienvenido a Proyecto Mascota
+            </h2>
+
+            <!-- MENÚ SUPERIOR -->
+            <nav class="flex gap-4">
+                <a href="{{ route('web.refugios.index') }}"
+                   class="text-indigo-600 hover:text-indigo-800 font-semibold">
+                    Refugios
+                </a>
+
+                <a href="{{ route('mascotas.index') }}"
+                   class="text-indigo-600 hover:text-indigo-800 font-semibold">
+                    Mascotas
+                </a>
+            </nav>
+        </div>
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Gestión de Usuarios') }}
             </h2>
             <a href="{{ route('usuarios.create') }}" class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
@@ -12,8 +30,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
 
                     <table class="min-w-full leading-normal">
                         <thead>

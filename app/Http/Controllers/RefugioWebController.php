@@ -24,15 +24,19 @@ class RefugioWebController extends Controller
             'nombre_refugio' => 'required',
         ]);
 
-        Refugio::create([
-            'user_id' => auth()->id(),
-            'nombre_refugio' => $request->nombre_refugio,
-            'descripcion' => $request->descripcion,
-            'direccion' => $request->direccion,
-            'telefono_contacto' => $request->telefono_contacto,
-            'correo_contacto' => $request->correo_contacto,
-            'estado' => $request->estado,
-        ]);
+      try {
+            Refugio::create([
+                'user_id' => auth()->id(),
+                'nombre_refugio' => $request->nombre_refugio,
+                'descripcion' => $request->descripcion,
+                'direccion' => $request->direccion,
+                'telefono_contacto' => $request->telefono_contacto,
+                'correo_contacto' => $request->correo_contacto,
+                'estado' => $request->estado,
+            ]);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
 
         return redirect()->route('web.refugios.index')->with('success', 'Refugio creado correctamente.');
     }

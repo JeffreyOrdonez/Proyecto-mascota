@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Editar Usuario') }}: {{ $usuario->nombre }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
 
                     {{-- Apuntamos a la ruta UPDATE y pasamos el ID --}}
                     <form method="POST" action="{{ route('usuarios.update', $usuario->id) }}">
@@ -44,8 +44,8 @@
                             </div>
                         </div>
 
-                        <div class="p-4 mb-4 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600">
-                            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">Cambiar Contraseña</h3>
+                        <div class="p-4 mb-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900 mb-2">Cambiar Contraseña</h3>
                             <p class="text-sm text-gray-500 mb-4">Deja estos campos vacíos si no quieres cambiar la contraseña.</p>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -65,7 +65,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div>
                                 <x-input-label for="role_id" :value="__('Rol de Usuario')" />
-                                <select id="role_id" name="role_id" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                <select id="role_id" name="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                     {{-- Lógica para marcar como SELECTED el rol actual --}}
                                     <option value="1" {{ $usuario->role_id == 1 ? 'selected' : '' }}>Usuario Normal</option>
                                     <option value="2" {{ $usuario->role_id == 2 ? 'selected' : '' }}>Administrador / Refugio</option>
@@ -74,7 +74,7 @@
 
                             <div>
                                 <x-input-label for="estado" :value="__('Estado')" />
-                                <select id="estado" name="estado" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                <select id="estado" name="estado" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                     <option value="activo" {{ $usuario->estado == 'activo' ? 'selected' : '' }}>Activo</option>
                                     <option value="inactivo" {{ $usuario->estado == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
                                 </select>
@@ -82,7 +82,7 @@
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
-                            <a href="{{ route('usuarios.index') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mr-4">
+                            <a href="{{ route('usuarios.index') }}" class="text-sm text-gray-600 hover:text-gray-900 mr-4">
                                 {{ __('Cancelar') }}
                             </a>
 

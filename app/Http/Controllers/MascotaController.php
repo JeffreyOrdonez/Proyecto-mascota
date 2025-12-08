@@ -22,10 +22,11 @@ class MascotaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+       $request->validate([
             'nombre' => 'required',
             'especie' => 'required',
             'refugio_id' => 'required|exists:refugios,id',
+            'sexo' => 'required'
         ]);
 
         Mascota::create($request->all());
